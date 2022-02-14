@@ -31,14 +31,9 @@ resource "aws_route53_record" "txt_spf" {
   ttl     = var.ttl
 }
 
-resource "aws_route53_record" "spf" {
-  count   = var.spf_value != null ? 1 : 0
-  zone_id = var.zone_id
-  name    = ""
-  type    = "SPF"
-  records = [var.spf_value]
-  ttl     = var.ttl
-}
+# Following rfc7208 usage of SPF record type is no longer recommended:
+# - https://datatracker.ietf.org/doc/html/rfc4408#section-3.1.1 - "new DNS RR of type SPF, code 99"
+# - https://datatracker.ietf.org/doc/html/rfc7208#section-14.1  - "no longer appropriate"
 
 # ------------------------------------------------------------------------------
 # DomainKeys Identified Mail (DKIM) standard
