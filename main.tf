@@ -13,7 +13,7 @@ resource "aws_route53_record" "mx" {
   name    = ""
   type    = "MX"
   records = local.final_mx_records
-  ttl     = "3600"
+  ttl     = var.ttl
 }
 
 # ------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ resource "aws_route53_record" "txt_spf" {
   name    = ""
   type    = "TXT"
   records = [var.spf_value]
-  ttl     = "3600"
+  ttl     = var.ttl
 }
 
 resource "aws_route53_record" "spf" {
@@ -37,7 +37,7 @@ resource "aws_route53_record" "spf" {
   name    = ""
   type    = "SPF"
   records = [var.spf_value]
-  ttl     = "3600"
+  ttl     = var.ttl
 }
 
 # ------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ resource "aws_route53_record" "dkim" {
   name    = "${var.dkim_selector}._domainkey"
   type    = "TXT"
   records = [var.dkim_value]
-  ttl     = "3600"
+  ttl     = var.ttl
 }
 
 # ------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ resource "aws_route53_record" "dmarc" {
   name    = "_dmarc"
   type    = "TXT"
   records = [var.dmarc_value]
-  ttl     = "3600"
+  ttl     = var.ttl
 }
 
 # ------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ resource "aws_route53_record" "custom_subdomain" {
   name     = each.value
   type     = "CNAME"
   records  = [var.gsuite_custom_url_cname]
-  ttl      = "3600"
+  ttl      = var.ttl
 }
 
 # ------------------------------------------------------------------------------

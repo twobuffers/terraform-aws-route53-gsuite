@@ -116,3 +116,13 @@ variable "custom_subdomain_sites" {
   description = "Subdomain for custom Sites URL"
   default     = null
 }
+
+# ------------------------------------------------------------------------------
+# Misc
+# ------------------------------------------------------------------------------
+
+variable "ttl" {
+  type        = string
+  description = "TTL"
+  default     = "3600"
+}
