@@ -22,7 +22,7 @@ resource "aws_route53_record" "mx" {
 # https://support.google.com/a/answer/33786
 # ------------------------------------------------------------------------------
 
-resource "aws_route53_record" "txt_spf" {
+resource "aws_route53_record" "spf" {
   count   = var.spf_value != null ? 1 : 0
   zone_id = var.zone_id
   name    = ""
